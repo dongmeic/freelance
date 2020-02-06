@@ -34,6 +34,8 @@ for(i in 2:length(years)){
   mining.r <- brick(paste0(infolder, "/mining_example/", years[i], '.tif'))
   plotRGB(mining.r, r = 1, g = 2, b = 3, stretch = "lin")
   box(col="grey")
+  mining.shp <- readOGR(dsn = paste0(infolder, "/mining_areas"), layer = paste0("Mining_Area_", years[i]))
+  plot(mining.shp, border = 'red', add=T, lwd=1)
 }
 dev.off()
 
